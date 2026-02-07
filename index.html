@@ -11,24 +11,55 @@ body {
     padding: 30px;
 }
 
-h1 {
-    text-align: center;
-    color: #0077b6;
-}
-
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
     background: white;
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+.toolbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+button {
+    background: #0077b6;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background: #023e8a;
+}
+
+.color-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    cursor: pointer;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 th {
@@ -38,19 +69,19 @@ th {
 }
 
 td {
-    border: 1px solid #dce7ef;
+    border: 1px solid #dbe7f0;
     padding: 10px;
     text-align: center;
-    min-height: 45px;
+    min-height: 40px;
 }
 
 td[contenteditable="true"] {
-    cursor: text;
+    cursor: pointer;
 }
 
 td:focus {
     outline: none;
-    background: #caf0f8;
+    box-shadow: inset 0 0 0 2px #90e0ef;
 }
 
 .hora {
@@ -59,24 +90,9 @@ td:focus {
     color: #0077b6;
 }
 
-button {
-    margin-top: 20px;
-    background: #0077b6;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
-}
-
-button:hover {
-    background: #023e8a;
-}
-
 .footer {
+    margin-top: 12px;
     text-align: center;
-    margin-top: 10px;
     font-size: 13px;
     color: #555;
 }
@@ -88,7 +104,17 @@ button:hover {
 <div class="container">
 <h1>📅 Gestor de Horarios</h1>
 
-<button onclick="guardarHorario()">💾 Guardar Horario</button>
+<div class="toolbar">
+    <button onclick="guardarHorario()">💾 Guardar horario</button>
+
+    <span>🎨 Colores:</span>
+    <div class="color-btn" style="background:#caf0f8" onclick="cambiarColor('#caf0f8')"></div>
+    <div class="color-btn" style="background:#caffbf" onclick="cambiarColor('#caffbf')"></div>
+    <div class="color-btn" style="background:#ffd6a5" onclick="cambiarColor('#ffd6a5')"></div>
+    <div class="color-btn" style="background:#ffadad" onclick="cambiarColor('#ffadad')"></div>
+    <div class="color-btn" style="background:#e4c1f9" onclick="cambiarColor('#e4c1f9')"></div>
+    <div class="color-btn" style="background:white" onclick="cambiarColor('white')"></div>
+</div>
 
 <table id="tabla">
 <tr>
@@ -101,102 +127,46 @@ button:hover {
     <th>Sábado</th>
 </tr>
 
-<tr>
-<td class="hora">08:00 - 09:00</td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-</tr>
-
-<tr>
-<td class="hora">09:00 - 10:00</td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-</tr>
-
-<tr>
-<td class="hora">10:00 - 11:00</td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-</tr>
-
-<tr>
-<td class="hora">11:00 - 12:00</td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-</tr>
+<!-- HORAS -->
+<tr><td class="hora">08:00 - 09:00</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+<tr><td class="hora">09:00 - 10:00</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+<tr><td class="hora">10:00 - 11:00</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+<tr><td class="hora">11:00 - 12:00</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+<tr><td class="hora">12:00 - 13:00</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+<tr><td class="hora">13:00 - 14:00</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+<tr><td class="hora">14:00 - 15:00</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+<tr><td class="hora">15:00 - 16:00</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>
+<tr><td class="hora">16:00 - 17:00</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td></tr>
 </table>
-    <tr>
-<td class="hora">12:00 - 13:00</td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-</tr>
-
-<tr>
-<td class="hora">13:00 - 14:00</td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-</tr>
-
-<tr>
-<td class="hora">14:00 - 15:00</td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-</tr>
-
-<tr>
-<td class="hora">15:00 - 16:00</td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-<td contenteditable="true"></td>
-</tr>
-
-<tr>
-
 
 <div class="footer">
-✏️ Haz clic en cualquier celda para editar • Se guarda automáticamente
+✏️ Haz clic en una celda para escribir • 🎨 selecciona un color • 💾 guarda tu horario
 </div>
 </div>
 
 <script>
+let celdaSeleccionada = null;
+
+document.addEventListener("click", function(e) {
+    if (e.target.tagName === "TD" && e.target.contentEditable === "true") {
+        celdaSeleccionada = e.target;
+    }
+});
+
+function cambiarColor(color) {
+    if (celdaSeleccionada) {
+        celdaSeleccionada.style.backgroundColor = color;
+    } else {
+        alert("Primero haz clic en una celda 😊");
+    }
+}
+
 function guardarHorario() {
-    const tabla = document.getElementById("tabla").innerHTML;
-    localStorage.setItem("horario", tabla);
+    localStorage.setItem("horario", document.getElementById("tabla").innerHTML);
     alert("Horario guardado correctamente 💙");
 }
 
-window.onload = function () {
+window.onload = function() {
     const data = localStorage.getItem("horario");
     if (data) {
         document.getElementById("tabla").innerHTML = data;
@@ -206,4 +176,3 @@ window.onload = function () {
 
 </body>
 </html>
-
